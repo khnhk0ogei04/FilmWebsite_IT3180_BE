@@ -1,13 +1,11 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.*;
+import com.example.filmxxx.repository.*;
 import com.example.filmxxx.dto.*;
 import com.example.filmxxx.entity.*;
 import com.example.filmxxx.exception.CinemaException;
 import com.example.filmxxx.exception.MovieException;
-import com.example.filmxxx.exception.MovieNotFoundException;
 import com.example.filmxxx.exception.ScheduleException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

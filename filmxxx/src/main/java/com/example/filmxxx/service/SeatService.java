@@ -1,7 +1,7 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.SeatRepository;
-import com.example.filmxxx.Repository.SeatScheduleStatusRepository;
+import com.example.filmxxx.repository.SeatRepository;
+import com.example.filmxxx.repository.SeatScheduleStatusRepository;
 import com.example.filmxxx.dto.SeatDTO;
 import com.example.filmxxx.dto.SeatScheduleStatusDTO;
 import com.example.filmxxx.entity.SeatEntity;

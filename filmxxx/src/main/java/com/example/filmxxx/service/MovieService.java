@@ -1,9 +1,8 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.CategoryRepository;
-import com.example.filmxxx.Repository.MovieRepository;
-import com.example.filmxxx.Repository.MovieSeatPriceRepository;
-import com.example.filmxxx.dto.CategoryDTO;
+import com.example.filmxxx.repository.CategoryRepository;
+import com.example.filmxxx.repository.MovieRepository;
+import com.example.filmxxx.repository.MovieSeatPriceRepository;
 import com.example.filmxxx.dto.MovieDTO;
 import com.example.filmxxx.entity.CategoryEntity;
 import com.example.filmxxx.entity.MovieEntity;

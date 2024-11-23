@@ -1,4 +1,4 @@
-package com.example.filmxxx.Repository;
+package com.example.filmxxx.repository;
 
 import com.example.filmxxx.dto.MovieStatisticsDTO;
 import com.example.filmxxx.entity.MovieEntity;
@@ -10,7 +10,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface MovieRepository extends JpaRepository<MovieEntity, Long> {

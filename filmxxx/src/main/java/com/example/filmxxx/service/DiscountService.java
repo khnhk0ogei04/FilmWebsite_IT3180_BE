@@ -1,17 +1,15 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.DiscountRepository;
-import com.example.filmxxx.Repository.MovieRepository;
-import com.example.filmxxx.Repository.MovieSeatPriceRepository;
+import com.example.filmxxx.repository.DiscountRepository;
+import com.example.filmxxx.repository.MovieRepository;
+import com.example.filmxxx.repository.MovieSeatPriceRepository;
 import com.example.filmxxx.dto.DiscountDTO;
 import com.example.filmxxx.entity.DiscountEntity;
 import com.example.filmxxx.entity.MovieEntity;
 import com.example.filmxxx.exception.MovieException;
-import com.example.filmxxx.exception.MovieNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 import java.util.List;

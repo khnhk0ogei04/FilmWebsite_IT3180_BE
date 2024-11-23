@@ -1,6 +1,6 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.CinemaRepository;
+import com.example.filmxxx.repository.CinemaRepository;
 import com.example.filmxxx.dto.CinemaDTO;
 import com.example.filmxxx.entity.CinemaEntity;
 import com.example.filmxxx.exception.CinemaException;

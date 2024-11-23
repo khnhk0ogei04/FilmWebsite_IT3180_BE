@@ -1,8 +1,8 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.BookingDetailRepository;
-import com.example.filmxxx.Repository.SeatScheduleStatusRepository;
-import com.example.filmxxx.Repository.UserRepository;
+import com.example.filmxxx.repository.BookingDetailRepository;
+import com.example.filmxxx.repository.SeatScheduleStatusRepository;
+import com.example.filmxxx.repository.UserRepository;
 import com.example.filmxxx.dto.BookingDetailsDTO;
 import com.example.filmxxx.entity.BookingDetailsEntity;
 import com.example.filmxxx.entity.SeatScheduleStatusEntity;

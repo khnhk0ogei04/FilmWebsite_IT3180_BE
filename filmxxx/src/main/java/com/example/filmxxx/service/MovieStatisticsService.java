@@ -1,12 +1,12 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.BookingDetailRepository;
-import com.example.filmxxx.Repository.ScheduleRepository;
-import com.example.filmxxx.Repository.SeatRepository;
+import com.example.filmxxx.repository.BookingDetailRepository;
+import com.example.filmxxx.repository.ScheduleRepository;
+import com.example.filmxxx.repository.SeatRepository;
 import com.example.filmxxx.dto.MovieStatisticsDTO;
 import com.example.filmxxx.dto.ScheduleDTO;
 import com.example.filmxxx.entity.MovieEntity;
-import com.example.filmxxx.Repository.MovieRepository;
+import com.example.filmxxx.repository.MovieRepository;
 import com.example.filmxxx.entity.ScheduleEntity;
 import com.example.filmxxx.exception.MovieException;
 import org.springframework.beans.factory.annotation.Autowired;

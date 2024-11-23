@@ -1,6 +1,6 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.UserRepository;
+import com.example.filmxxx.repository.UserRepository;
 import com.example.filmxxx.dto.UserDTO;
 import com.example.filmxxx.entity.RoleEntity;
 import com.example.filmxxx.entity.UserEntity;
@@ -30,7 +30,7 @@ public class UserService {
     private ModelMapper modelMapper;
 
     @Autowired
-    private com.example.filmxxx.Repository.roleRepository roleRepository;
+    private com.example.filmxxx.repository.roleRepository roleRepository;
 
     @Autowired
     private EmailService emailService;

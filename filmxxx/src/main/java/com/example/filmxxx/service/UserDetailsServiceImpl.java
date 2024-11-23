@@ -1,6 +1,6 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.UserRepository;
+import com.example.filmxxx.repository.UserRepository;
 import com.example.filmxxx.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

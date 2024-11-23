@@ -1,7 +1,6 @@
 package com.example.filmxxx.service;
 
-import com.example.filmxxx.Repository.MovieRepository;
-import com.example.filmxxx.Repository.ShiftRepository;
+import com.example.filmxxx.repository.ShiftRepository;
 import com.example.filmxxx.dto.ShiftDTO;
 import com.example.filmxxx.entity.ShiftEntity;
 import org.modelmapper.ModelMapper;

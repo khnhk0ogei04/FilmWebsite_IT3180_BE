@@ -1,4 +1,4 @@
-package com.example.filmxxx.Repository;
+package com.example.filmxxx.repository;
 
 import com.example.filmxxx.entity.BookingDetailsEntity;
 import org.springframework.data.domain.Page;

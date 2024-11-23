@@ -1,6 +1,5 @@
-package com.example.filmxxx.Repository;
+package com.example.filmxxx.repository;
 
-import com.example.filmxxx.dto.SeatDTO;
 import com.example.filmxxx.entity.SeatEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
