@@ -1,0 +1,27 @@
+// Chu de BTL mon Nhap mon CNPM - IT3180
+https://github.com/NgKhacDuy/dgv/blob/master/database.sql
+https://github.com/huync21/cinema_back_end
+
+// Tai lieu Java-Springboot:
+https://github.com/loda-kun/spring-boot-learning
+https://stringee.com/vi/blog/post/tao-restful-api-voi-spring-boot
+
+
+// Tài liệu ReactJS/NextJS:
+
+
+// Tránh lỗi vòng lặp vô hạn khi gọi dữ liệu
+@JsonManagedReference
+@JsonBackReference
+@JsonIgnore
+
+
+// Database:
+https://github.com/imabot05/FilmWebsite/blob/main/database.sql
+
+// EER Diagram:
+https://github.com/imabot05/FilmWebsite/blob/main/BTL.png
+
+// Sử dụng MySQL, lập tài khoản với tên đăng nhập root, password bỏ trống, insert database vào
+
+// Cài đặt các thư viện trong pom.xml, sử dụng Intellij, project chạy trên cổng 8080, mysql kết nối xampp, sử dụng PORT 3306
