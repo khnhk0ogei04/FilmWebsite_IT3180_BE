@@ -8,8 +8,8 @@
 
 #### If **Port 3306** is **blocked**, follow these steps:
 
-1. Open **Command Prompt**.
-2. Run the following commands:
+##### 1. Open **Command Prompt**.
+##### 2. Run the following commands:
 
    ```sh
    netstat -ano | findstr :3306
@@ -21,13 +21,13 @@
    TCP    0.0.0.0:3306       0.0.0.0:0              LISTENING       12345
    ```
 
-3. Use the **Process ID** (\`12345\` in the example above) to terminate the process:
+#####  3. Use the **Process ID** (12345 in the example above) to terminate the process:
 
    ```sh
    taskkill /F /PID 12345
    ```
 
-4. Restart **XAMPP**, and the issue should be resolved.
+##### 4. Restart **XAMPP**, and the issue should be resolved.
 
 ---
 
