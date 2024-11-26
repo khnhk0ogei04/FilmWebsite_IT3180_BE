@@ -9,7 +9,6 @@ import com.example.filmxxx.entity.MovieEntity;
 import com.example.filmxxx.entity.MovieSeatPriceEntity;
 import com.example.filmxxx.exception.CategoryNotFoundException;
 import com.example.filmxxx.exception.MovieException;
-import com.example.filmxxx.exception.MovieNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -110,7 +109,7 @@ public class MovieService {
 
     public MovieEntity updateMovie(Long id, MovieDTO movieDTO) {
         MovieEntity movieEntity = movieRepository.findById(id)
-                .orElseThrow(() -> new MovieNotFoundException("Movie not found with id " + id));
+                .orElseThrow(() -> new MovieException.MovieNotFoundException(id));
         movieEntity.setMovieName(movieDTO.getMovieName());
         movieEntity.setDescription(movieDTO.getDescription());
         movieEntity.setDirectors(movieDTO.getDirectors());
@@ -132,7 +131,7 @@ public class MovieService {
         MovieSeatPriceEntity priceEntity = movieSeatPriceRepository.findByMovieIdAndSeatType(movieId, seatType)
                 .orElseGet(() -> {
                     MovieEntity movie = movieRepository.findById(movieId)
-                            .orElseThrow(() -> new MovieNotFoundException("Movie not found with id " + movieId));
+                            .orElseThrow(() -> new MovieException.MovieNotFoundException(movieId));
                     return new MovieSeatPriceEntity(0L, movie, seatType, price);
                 });
 

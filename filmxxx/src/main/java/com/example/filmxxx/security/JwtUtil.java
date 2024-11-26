@@ -70,7 +70,7 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 5))  // Token valid for 1 hour
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))  // Change the length of token to 1 hour
                 .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .compact();
     }

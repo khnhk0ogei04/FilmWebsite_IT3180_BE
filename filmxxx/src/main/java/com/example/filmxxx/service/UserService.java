@@ -81,7 +81,11 @@ public class UserService {
     public UserDTO getUserById(Long id) {
         Optional<UserEntity> user = userRepository.findById(id);
         if (user.isPresent()){
-            return modelMapper.map(user.get(), UserDTO.class);
+            UserDTO userDTO = modelMapper.map(user.get(), UserDTO.class);
+
+            Long orderCounts = userRepository.countTicketsByUserId(id);
+            userDTO.setOrderCount(orderCounts);
+            return userDTO;
         } else {
             throw new UserException.UserNotFoundException(id);
         }
