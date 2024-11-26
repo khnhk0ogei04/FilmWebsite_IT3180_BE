@@ -11,21 +11,21 @@
 1. Open **Command Prompt**.
 2. Run the following commands:
 
-   \`\`\`sh
+   ```sh
    netstat -ano | findstr :3306
-   \`\`\`
+   ```
 
    This will display the process currently using **Port 3306**. For example:
 
-   \`\`\`
+   ```
    TCP    0.0.0.0:3306       0.0.0.0:0              LISTENING       12345
-   \`\`\`
+   ```
 
 3. Use the **Process ID** (\`12345\` in the example above) to terminate the process:
 
-   \`\`\`sh
+   ```sh
    taskkill /F /PID 12345
-   \`\`\`
+   ```
 
 4. Restart **XAMPP**, and the issue should be resolved.
 
