@@ -11,17 +11,34 @@
 1. Open **Command Prompt**.
 2. Run the following commands:
 
-   ```sh
-   netstat -ano | findstr :<port_number>
-   taskkill /F /PID <process_id>
-#### Example:
-If Port <span style="color:red; font-size:16px;">3306</span>is blocked, the command output might look like this:
+   \`\`\`sh
+   netstat -ano | findstr :3306
+   \`\`\`
 
-TCP    0.0.0.0:3306       0.0.0.0:0              LISTENING       12345
-Run the following command:
-   ```sh
+   This will display the process currently using **Port 3306**. For example:
+
+   \`\`\`
+   TCP    0.0.0.0:3306       0.0.0.0:0              LISTENING       12345
+   \`\`\`
+
+3. Use the **Process ID** (\`12345\` in the example above) to terminate the process:
+
+   \`\`\`sh
    taskkill /F /PID 12345
-   ```
+   \`\`\`
 
-#### 📸 Screenshot
+4. Restart **XAMPP**, and the issue should be resolved.
+
+---
+
+### 📸 **Screenshot**
 <img src="https://github.com/khnhk0ogei04/FilmWebsite_IT3180_BE/blob/main/BlockedPort.png" alt="Blocked Port Screenshot" width="600">
+
+---
+
+#### **Notes:**
+- Replace \`3306\` with your specific blocked port if it differs.
+- Replace \`12345\` with the Process ID returned by the \`netstat\` command.
+- Ensure **MySQL** is properly started after clearing the blocked port.
+
+---
