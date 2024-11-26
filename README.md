@@ -1,9 +1,28 @@
-# FilmWebsite_IT3180_BE
-## Capstone Project of Introduction to Software Engineering - Group 21
-Using XamPP on PORT 3306:
-- If port 3306 is blocked, follow these steps:
+# 🎥 FilmWebsite_IT3180_BE
 
-RUN COMMAND PROMPT
-  + netstat -ano | findstr :<port_number>
-  + taskkill /F /PID <process_id>
-![alt text](https://github.com/khnhk0ogei04/FilmWebsite_IT3180_BE/blob/main/BlockedPort.png)
+## Capstone Project of **Introduction to Software Engineering** - Group 21
+
+---
+
+### 🛠️ **Setting Up XAMPP on Port 3306**
+
+If **Port 3306** is **blocked**, follow these steps:
+
+1. Open **Command Prompt**.
+2. Run the following commands:
+
+   ```sh
+   netstat -ano | findstr :<port_number>
+   taskkill /F /PID <process_id>
+Example:
+If Port 3306 is blocked, the command output might look like this:
+
+Copy code
+TCP    0.0.0.0:3306       0.0.0.0:0              LISTENING       12345
+Run:
+
+sh
+Copy code
+taskkill /F /PID 12345
+📸 Screenshot
+<img src="https://github.com/khnhk0ogei04/FilmWebsite_IT3180_BE/blob/main/BlockedPort.png" alt="Blocked Port Screenshot" width="600">
