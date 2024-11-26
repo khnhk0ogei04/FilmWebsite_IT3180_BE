@@ -48,7 +48,8 @@
 
 | Student ID     | Full Name           |
 |-----------------|---------------------|
-| 20225019      | Nguyen Duy Khanh           |
+| 20220041      | Nguyen Ngoc Phuc      |
+| 20225019      | Nguyen Duy Khanh      |
 
 
 ---
