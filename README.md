@@ -47,9 +47,12 @@
 #### 👥 Kudo to my teammates
 
 | Student ID     | Full Name           |
-|-----------------|---------------------|
+|----------------|---------------------|
 | 20220041      | Nguyen Ngoc Phuc      |
 | 20225019      | Nguyen Duy Khanh      |
-
+| 20224836      | Vi Hung Duc           |
+| 20224988      | Ha Huy Hoang          |
+| 20224889      | Dinh Bao Phuc         |
+| 2022          | Luong Thai Khang      |
 
 ---
