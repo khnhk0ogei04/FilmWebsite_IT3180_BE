@@ -44,7 +44,7 @@
 ---
 
 ### 👥 **Contributors**
-#### Kudo to my teammates:
+#### 🍿🥤 Kudo to my teammates:
 
 | Student ID     | Full Name           |
 |-----------------|---------------------|
