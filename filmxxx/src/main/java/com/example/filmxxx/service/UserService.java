@@ -1,5 +1,6 @@
 package com.example.filmxxx.service;
 
+import com.example.filmxxx.exception.EmailException;
 import com.example.filmxxx.repository.UserRepository;
 import com.example.filmxxx.dto.UserDTO;
 import com.example.filmxxx.entity.RoleEntity;
@@ -43,8 +44,12 @@ public class UserService {
     }
 
     public Long getTotalTicketsByUserId(Long userId) {
-            return userRepository.countTicketsByUserId(userId);
+        return userRepository.countTicketsByUserId(userId);
     }
+
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}$";
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+    private static final Integer MIN_PASSWORD_LENGTH = 6;
 
     // Get all users in one page:
     public List<UserDTO> getAllUsers() {
@@ -67,6 +72,11 @@ public class UserService {
 
     public boolean changePassword(String username, String currentPassword, String newPassword) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
+
+        if (newPassword.length() < MIN_PASSWORD_LENGTH) {
+            throw new UserException.InvalidPasswordException("Password must be at least 6 characters long.");
+        }
+
         if (user.isPresent()) {
             UserEntity userEntity = user.get();
             if (passwordEncoder.matches(currentPassword, userEntity.getPassword())) {
@@ -91,9 +101,6 @@ public class UserService {
         }
     }
 
-    private static final String EMAIL_REGEX = "^[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}$";
-    private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
-
     public UserDTO createUser(UserDTO userDTO) {
         if (userRepository.findByUsername(userDTO.getUsername()).isPresent()){
             throw new UserException.UsernameAlreadyExistsException(userDTO.getUsername());
@@ -101,6 +108,10 @@ public class UserService {
 
         if (!EMAIL_PATTERN.matcher(userDTO.getEmail()).matches()) {
             throw new UserException.InvalidEmailFormatException(userDTO.getEmail());
+        }
+
+        if (userDTO.getPassword().length() < MIN_PASSWORD_LENGTH) {
+            throw new UserException.InvalidPasswordException("Password must be at least 6 characters long.");
         }
 
         UserEntity userEntity = modelMapper.map(userDTO, UserEntity.class);
@@ -117,7 +128,7 @@ public class UserService {
         return modelMapper.map(savedUser, UserDTO.class);
     }
 
-    public void resetPassword(String username){
+    public void resetPassword(String username) throws EmailException.ErrorSendEmailException {
         Optional<UserEntity> user = userRepository.findByUsername(username);
         if (user.isPresent()){
             UserEntity userEntity = user.get();
@@ -129,16 +140,36 @@ public class UserService {
             userRepository.save(userEntity);
 
             String subject = "Password Reset";
-            String message = "Click here to reset your password: "
-                    + "http://localhost:3000/reset-password/" + resetToken;
+            String message = """
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+                <h2 style="color: #007BFF; text-align: center;">Password Reset</h2>
+                <p>Dear <b>%s</b>,</p>
+                <p>We received a request to reset your password. If you made this request, please use the OTP below and click the link to reset your password:</p>
+                <p><b>Your OTP:</b> <span style="color: red; font-weight: bold;">%s</span></p>
+                <p>
+                    <a href="http://localhost:3000/reset-password/%s" 
+                       style="background-color: #007BFF; color: white; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px;">
+                        Reset Password
+                    </a>
+                </p>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;" />
+                <p style="font-size: 14px; color: #555;">
+                    If you didn’t request this, please ignore this email or contact support.
+                </p>
+            </div>
+        """.formatted(userEntity.getFullName(), resetToken, resetToken);
+
             emailService.sendMessage("khanh8a04ytb@gmail.com", email, subject, message);
         } else {
-            throw new RuntimeException("Error when send email");
+            throw new EmailException.ErrorSendEmailException("Error when send email");
         }
     }
 
     public void updatePasswordWithToken(String resetToken, String newPassword) {
         System.out.println(resetToken + " " + newPassword);
+        if (newPassword.length() < MIN_PASSWORD_LENGTH) {
+            throw new UserException.InvalidPasswordException("Password must be at least 6 characters long.");
+        }
         Optional<UserEntity> userOptional = userRepository.findByResetToken(resetToken);
         if (userOptional.isEmpty()) {
             throw new UserException.InvalidTokenException("Token is not valid.");
@@ -182,9 +213,10 @@ public class UserService {
         Optional<UserEntity> user = userRepository.findById(id);
         if (user.isPresent()){
             UserEntity userEntity = user.get();
-            userEntity.setAccountBalance(userEntity.getAccountBalance() + amount);
+            // Update new AccountBalance
+            Long newAccountBalance = userEntity.getAccountBalance() + amount;
+            userEntity.setAccountBalance(newAccountBalance);
             userEntity.setModifiedDate(LocalDateTime.now());
-
             UserEntity savedUser = userRepository.save(userEntity);
             return modelMapper.map(savedUser, UserDTO.class);
         } else {

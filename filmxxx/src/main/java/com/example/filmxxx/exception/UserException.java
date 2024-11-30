@@ -36,4 +36,16 @@ public class UserException{
             super("Expired token: " + token);
         }
     }
+
+    public static class InvalidEmailException extends RuntimeException {
+        public InvalidEmailException(String email) {
+            super("Invalid email: " + email);
+        }
+    }
+
+    public static class InvalidPasswordException extends RuntimeException {
+        public InvalidPasswordException(String password) {
+            super("Invalid password: " + password);
+        }
+    }
 }
