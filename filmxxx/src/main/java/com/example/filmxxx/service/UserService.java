@@ -107,11 +107,11 @@ public class UserService {
         }
 
         if (!EMAIL_PATTERN.matcher(userDTO.getEmail()).matches()) {
-            throw new UserException.InvalidEmailFormatException(userDTO.getEmail());
+            throw new UserException.InvalidEmailFormatException("Email must contain at least 1 uppercase letter.");
         }
 
-        if (userDTO.getPassword().length() < MIN_PASSWORD_LENGTH) {
-            throw new UserException.InvalidPasswordException("Password must be at least 6 characters long.");
+        if (userDTO.getPassword().length() < MIN_PASSWORD_LENGTH){
+            throw new UserException.InvalidPasswordException("Password's length must contains at least 6 characters");
         }
 
         UserEntity userEntity = modelMapper.map(userDTO, UserEntity.class);
@@ -121,6 +121,7 @@ public class UserService {
                         .orElseThrow(() -> new RoleException.RoleNotFoundException(2L));
 
         userEntity.setRole(role);
+        userEntity.setStatus(1);
         userEntity.setAccountBalance(0L); // default account balance is 0
         userEntity.setOrderCount(0L); // default order count is 0
         userEntity.setCreatedDate(LocalDateTime.now());
@@ -213,7 +214,7 @@ public class UserService {
         Optional<UserEntity> user = userRepository.findById(id);
         if (user.isPresent()){
             UserEntity userEntity = user.get();
-            // Update new AccountBalance
+            // Update new accountBalance
             Long newAccountBalance = userEntity.getAccountBalance() + amount;
             userEntity.setAccountBalance(newAccountBalance);
             userEntity.setModifiedDate(LocalDateTime.now());
