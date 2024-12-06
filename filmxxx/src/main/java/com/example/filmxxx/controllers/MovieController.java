@@ -47,7 +47,7 @@ public class MovieController {
     }
 
     @PostMapping
-    public MovieEntity createMovie(@RequestBody MovieDTO movieDTO){
+    public MovieEntity createMovie(@RequestBody MovieDTO movieDTO) throws Exception {
         return movieService.createMovie(movieDTO);
     }
 

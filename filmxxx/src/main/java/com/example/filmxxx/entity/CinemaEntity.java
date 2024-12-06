@@ -1,17 +1,14 @@
 package com.example.filmxxx.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.modelmapper.internal.bytebuddy.dynamic.loading.InjectionClassLoader;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "cinemas")
-@NoArgsConstructor
-@AllArgsConstructor
-public class CinemaEntity {
+public class CinemaEntity extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

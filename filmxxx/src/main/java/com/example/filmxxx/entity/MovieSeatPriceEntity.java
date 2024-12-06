@@ -1,16 +1,16 @@
 package com.example.filmxxx.entity;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "movie_seat_prices")
-public class MovieSeatPriceEntity {
+public class MovieSeatPriceEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

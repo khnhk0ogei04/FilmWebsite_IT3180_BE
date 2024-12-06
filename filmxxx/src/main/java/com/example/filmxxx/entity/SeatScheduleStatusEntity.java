@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "seat_schedule_status")
-public class SeatScheduleStatusEntity {
+public class SeatScheduleStatusEntity extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,6 @@
 package com.example.filmxxx.service;
 
+import com.example.filmxxx.exception.CategoryException;
 import com.example.filmxxx.repository.CategoryRepository;
 import com.example.filmxxx.repository.MovieRepository;
 import com.example.filmxxx.repository.MovieSeatPriceRepository;
@@ -7,7 +8,6 @@ import com.example.filmxxx.dto.MovieDTO;
 import com.example.filmxxx.entity.CategoryEntity;
 import com.example.filmxxx.entity.MovieEntity;
 import com.example.filmxxx.entity.MovieSeatPriceEntity;
-import com.example.filmxxx.exception.CategoryNotFoundException;
 import com.example.filmxxx.exception.MovieException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -84,10 +84,10 @@ public class MovieService {
                 .build();
     }
 
-    public MovieEntity createMovie(MovieDTO movieDTO) {
+    public MovieEntity createMovie(MovieDTO movieDTO) throws Exception {
         MovieEntity movieEntity = modelMapper.map(movieDTO, MovieEntity.class);
         CategoryEntity categoryEntity = categoryRepository.findById(movieDTO.getCategoryId())
-                .orElseThrow(() -> new CategoryNotFoundException("Category not found with id " + movieDTO.getCategoryId()));
+                .orElseThrow(() -> new CategoryException.CategoryNotFoundException("Category not found with id " + movieDTO.getCategoryId()));
         movieEntity.setCategory(categoryEntity);
 
         // Save information of film to table

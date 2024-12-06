@@ -23,14 +23,14 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
+    public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) throws Exception {
         CategoryDTO categoryDTO = categoryService.getCategoryById(id);
         return ResponseEntity.ok(categoryDTO);
     }
 
 
     @PostMapping
-    public ResponseEntity<CategoryEntity> addCategory(@RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<CategoryEntity> addCategory(@RequestBody CategoryDTO categoryDTO) throws Exception {
         CategoryEntity categoryEntity = categoryService.addCategory(categoryDTO);
         return ResponseEntity.ok(categoryEntity);
     }

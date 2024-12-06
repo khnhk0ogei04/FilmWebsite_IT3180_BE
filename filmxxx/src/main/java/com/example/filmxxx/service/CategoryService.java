@@ -1,12 +1,11 @@
 package com.example.filmxxx.service;
 
+import com.example.filmxxx.exception.CategoryException;
 import com.example.filmxxx.repository.CategoryRepository;
 import com.example.filmxxx.dto.CategoryDTO;
 import com.example.filmxxx.dto.MovieDTO;
 import com.example.filmxxx.entity.CategoryEntity;
 import com.example.filmxxx.entity.MovieEntity;
-import com.example.filmxxx.exception.CategoryDuplicatedException;
-import com.example.filmxxx.exception.CategoryNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +26,9 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public CategoryDTO getCategoryById(Long categoryId) {
+    public CategoryDTO getCategoryById(Long categoryId) throws Exception{
         CategoryEntity category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new CategoryNotFoundException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new CategoryException.CategoryNotFoundException("Category not found with id: " + categoryId));
         CategoryDTO categoryDTO = modelMapper.map(category, CategoryDTO.class);
         List<MovieEntity> movies = category.getMovies();
         List<MovieDTO> moviesDTO = new ArrayList<>();
@@ -40,12 +39,12 @@ public class CategoryService {
         categoryDTO.setMovies(moviesDTO);
         return categoryDTO;
     }
-    public CategoryEntity addCategory(CategoryDTO categoryDTO) {
+    public CategoryEntity addCategory(CategoryDTO categoryDTO) throws Exception {
 
         String normalizedCategoryName = normalizeCategoryName(categoryDTO.getCategoryName());
 
         if (categoryRepository.findByCategoryNameIgnoreCase(normalizedCategoryName) != null) {
-            throw new CategoryDuplicatedException("Category with this name already exists.");
+            throw new CategoryException.CategoryDuplicatedException("Category with this name already exists.");
         }
 
         CategoryEntity categoryEntity = new CategoryEntity();

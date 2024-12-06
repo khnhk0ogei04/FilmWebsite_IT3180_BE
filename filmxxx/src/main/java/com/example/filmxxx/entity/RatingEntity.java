@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @Entity
 @Table(name = "ratings")
-public class RatingEntity {
+public class RatingEntity extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
