@@ -1,4 +1,4 @@
-# 🎥 FilmWebsite_IT3180_BE
+# 🎥 FilmWebsite_IT3180_BACKEND
 
 ## Capstone Project of **Introduction to Software Engineering** - Group 21
 
